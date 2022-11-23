@@ -1,4 +1,11 @@
 public class KDtree {
+
+    private KDnode root;
+
+    public KDtree(){
+        this.root = null;
+    }
+
     public class KDnode {
 
         public Point3D point;
@@ -6,7 +13,7 @@ public class KDtree {
         public double value;
         public KDnode left;
         public KDnode right;
-
+    
         public KDnode(Point3D pt, int axis) {
             this.point = pt;
             this.axis = axis;
@@ -14,6 +21,12 @@ public class KDtree {
             this.left = null;
             this.right = null;
         }
+    }
+
+
+    public static void main(String[] args){
+
+       KDtree tree = new KDtree();
 
     }
 
