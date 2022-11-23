@@ -47,7 +47,8 @@ public class KDtree {
         else{
             node.right = insert(pt, node.right, (axis+1) %3);
         }
-        this.root = node;
+
+        if (this.root == null) this.root = node;
         return node;
     }
 
@@ -71,7 +72,7 @@ public class KDtree {
         tree.add(p6);
         tree.add(p7);
 
-        System.out.println(tree.root.point.getX());
+        System.out.println(tree.root.point.getZ());
     }
 
 }
