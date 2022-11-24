@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class NearestNeighborsKD {
 
-    private java.util.List<Point3D> points; 
-    private KDtree tree;
+    public java.util.List<Point3D> points; //todo: remove public once testing is done
+    public KDtree tree; //todo: remove public once testing is done
 
     NearestNeighborsKD(List<Point3D> points){
         //builds a KDtree from the list of points
@@ -55,7 +55,7 @@ public class NearestNeighborsKD {
         tree.add(p7);
 
         NearestNeighborsKD n = new NearestNeighborsKD(points);
-        //System.out.println(tree.root.point.getZ());
+        //System.out.println(n.tree.root.right.point.getZ());
 
     }
 

@@ -1,6 +1,6 @@
 public class KDtree {
 
-    private KDnode root;
+    public KDnode root;
 
     public KDtree(){
         this.root = null;
@@ -9,29 +9,30 @@ public class KDtree {
     //use this function to add
     public void add(Point3D pt){
 
-        KDnode node = null;
-        insert(pt, node, 0);
+        insert(pt, this.root, 0);
 
     }
 
     //used for recursion of add function
-    public KDnode insert(Point3D pt, KDnode node, int axis){
-
-        //note: this has not yet been confirmed to work as the visual of the tree hasn't been established
+    public KDnode insert(Point3D pt, KDnode node, int axis){ //maybe node should be the root?
 
         if(node == null){
             node = new KDnode(pt,axis);
+            if (this.root == null){
+                this.root = node;
+            }
         }
 
         else if(pt.get(axis) <= node.value){
+            System.out.println(pt + "left");
             node.left = insert(pt, node.left, (axis+1) % 3); //module dimension
         }
 
         else{
+            System.out.println(pt + "right");
             node.right = insert(pt, node.right, (axis+1) %3);
         }
 
-        if (this.root == null) this.root = node;
         return node;
     }
 
@@ -55,7 +56,7 @@ public class KDtree {
         tree.add(p6);
         tree.add(p7);
 
-        System.out.println(tree.root.point.getZ());
+        System.out.println(tree.root.point);
     }
 
 }
