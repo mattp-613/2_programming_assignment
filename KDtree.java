@@ -14,22 +14,20 @@ public class KDtree {
     }
 
     //used for recursion of add function
-    public KDnode insert(Point3D pt, KDnode node, int axis){ //maybe node should be the root?
+    public KDnode insert(Point3D pt, KDnode node, int axis){
 
         if(node == null){
             node = new KDnode(pt,axis);
-            if (this.root == null){
+            if (this.root == null){ //may be redundant
                 this.root = node;
             }
         }
 
         else if(pt.get(axis) <= node.value){
-            System.out.println(pt + "left");
             node.left = insert(pt, node.left, (axis+1) % 3); //module dimension
         }
 
         else{
-            System.out.println(pt + "right");
             node.right = insert(pt, node.right, (axis+1) %3);
         }
 
@@ -56,7 +54,7 @@ public class KDtree {
         tree.add(p6);
         tree.add(p7);
 
-        System.out.println(tree.root.point);
+        //System.out.println(tree.root.right.left.point);
     }
 
 }

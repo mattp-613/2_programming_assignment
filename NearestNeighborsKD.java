@@ -19,10 +19,33 @@ public class NearestNeighborsKD {
         }
 
     }
+    public List<Point3D> rangeQuery(Point3D p, double eps){
+        List<Point3D> neighbors = new ArrayList<Point3D>();
+        return rangeQueryRec(p, eps, neighbors, this.tree.root);
+    }
 
-    public List<Point3D> rangeQuery(Point3D p, double eps, List<Point3D> points, KDnode node) {
-        //finds the nearest neighbors of point p from distance eps, given n list of points and 
-        return null;
+    //recurison of rangeQuery
+    public List<Point3D> rangeQueryRec(Point3D p, double eps, List<Point3D> points, KDnode node) {
+        //finds the nearest neighbors of point p from distance eps. returns list of points
+
+        if(node == null){
+            return null;
+        }
+        
+        if(p.distance(node.point) < eps){
+            points.add(node.point);
+        }
+
+        if((p.get(node.axis) - eps) <= node.value){
+            rangeQueryRec(p, eps, points, node.left);
+        }
+
+        if((p.get(node.axis) + eps) > node.value){
+            rangeQueryRec(p, eps, points, node.right);
+        }
+
+        return points;
+        
     }
 
     public static void main(String[] args){
@@ -55,7 +78,11 @@ public class NearestNeighborsKD {
         tree.add(p7);
 
         NearestNeighborsKD n = new NearestNeighborsKD(points);
-        //System.out.println(n.tree.root.right.point.getZ());
+
+        java.util.List<Point3D> neighbors = n.rangeQuery(p2, 4);
+
+
+        System.out.println(neighbors);
 
     }
 
