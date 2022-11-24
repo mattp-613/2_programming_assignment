@@ -6,26 +6,6 @@ public class KDtree {
         this.root = null;
     }
 
-    public class KDnode {
-
-        public Point3D point;
-        public int axis;
-        public double value;
-        public KDnode left;
-        public KDnode right;
-    
-        public KDnode(Point3D pt, int axis) {
-            this.point = pt;
-            this.axis = axis;
-            this.value = pt.get(axis);
-            this.left = null;
-            this.right = null;
-        }
-    }
-
-    //KDtree methods
-
-
     //use this function to add
     public void add(Point3D pt){
 
@@ -36,10 +16,13 @@ public class KDtree {
 
     //used for recursion of add function
     public KDnode insert(Point3D pt, KDnode node, int axis){
-        System.out.println("hi");
+
+        //note: this has not yet been confirmed to work as the visual of the tree hasn't been established
+
         if(node == null){
-            node = new KDnode(pt,axis); //this can also be done in add function? not sure
+            node = new KDnode(pt,axis);
         }
+
         else if(pt.get(axis) <= node.value){
             node.left = insert(pt, node.left, (axis+1) % 3); //module dimension
         }

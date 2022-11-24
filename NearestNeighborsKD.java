@@ -6,27 +6,56 @@ public class NearestNeighborsKD {
     private java.util.List<Point3D> points; 
     private KDtree tree;
 
-    NearestNeighborsKD(java.util.List<Point3D> points){
+    NearestNeighborsKD(List<Point3D> points){
+        //builds a KDtree from the list of points
 
         this.points = points;
+        this.tree = new KDtree();
+
+        for(int i = 0; i < points.size(); i++){
+
+            tree.add(points.get(i));
+
+        }
 
     }
 
-
-    public List<Point3D> rangeQuery(Point3D p, double eps) {
+    public List<Point3D> rangeQuery(Point3D p, double eps, List<Point3D> points, KDnode node) {
         //finds the nearest neighbors of point p from distance eps, given n list of points and 
         return null;
     }
 
-    public KDtree NearestNeighborsKD(List<Point3D> list){
-        //builds a KDtree from the list of points
-
+    public static void main(String[] args){
+        
         KDtree tree = new KDtree();
-        return tree;
-    }
+        Point3D p1 = new Point3D(2,1,3);
+        Point3D p2 = new Point3D(-5,2,10);
+        Point3D p3 = new Point3D(12,7,4);
+        Point3D p4 = new Point3D(3,2,3);
+        Point3D p5 = new Point3D(-1,1,3);
+        Point3D p6 = new Point3D(9,-4,-2);
+        Point3D p7 = new Point3D(2,1,-4);
 
+        java.util.List<Point3D> points = new ArrayList<Point3D>();
 
-    public static void main(String[] args){        
+        points.add(p1);
+        points.add(p2);
+        points.add(p3);
+        points.add(p4);
+        points.add(p5);
+        points.add(p6);
+        points.add(p7);
+
+        tree.add(p1);
+        tree.add(p2);
+        tree.add(p3);
+        tree.add(p4);
+        tree.add(p5);
+        tree.add(p6);
+        tree.add(p7);
+
+        NearestNeighborsKD n = new NearestNeighborsKD(points);
+        //System.out.println(tree.root.point.getZ());
 
     }
 
