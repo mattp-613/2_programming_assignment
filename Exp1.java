@@ -58,10 +58,22 @@ public class Exp1 {
 								Double.parseDouble(args[5]));
 	
 	// creates the NearestNeighbor instance
-	NearestNeighbors nn = new NearestNeighbors(points);
-	List<Point3D> neighbors = nn.rangeQuery(query,eps);
-	
+
+	if (method.equals("lin")){
+		NearestNeighbors nn = new NearestNeighbors(points);
+		List<Point3D> neighbors = nn.rangeQuery(query,eps);
+		System.out.println("number of neighbors = "+neighbors.size());
+		System.out.println(neighbors);
+	}
+	else{
+		NearestNeighborsKD nn = new NearestNeighborsKD(points);
+		List<Point3D> neighbors = nn.rangeQuery(query,eps);
+		System.out.println("number of neighbors = "+neighbors.size());
+		System.out.println(neighbors);
+	}
+	/* 
 	System.out.println("number of neighbors = "+neighbors.size());
 	System.out.println(neighbors);
+	*/
   }   
 }
