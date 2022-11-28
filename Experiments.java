@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.io.*;  
 import java.util.Scanner;  
 
-public class Exp1 {
+public class Experiments {
 
 	//this is Experiment 2
 	public static long averageRangequeryTimeLinear(List<Point3D> points, double eps){
@@ -81,20 +81,21 @@ public class Exp1 {
   
   public static void main(String[] args) throws Exception {  
   
+	//Choose between exp1 or exp2
+	String experiment = args[0];
     // choose between linear or kd
-	String method = args[0];
+	String method = args[1];
 
-	double eps = Double.parseDouble(args[1]);
-  
-    // reads the csv file
-    List<Point3D> points = Exp1.read(args[2]);
+	// reads the csv file
+	List<Point3D> points = Experiments.read(args[2]);
+
+	double eps = Double.parseDouble(args[3]);
 	
 	// read the point given
-	Point3D query = new Point3D(Double.parseDouble(args[3]),
-								Double.parseDouble(args[4]),
-								Double.parseDouble(args[5]));
+	Point3D query = new Point3D(Double.parseDouble(args[4]),
+								Double.parseDouble(args[5]),
+								Double.parseDouble(args[6]));
 
-	String experiment = args[6];
 
 
 	//Experiment 1
@@ -123,8 +124,8 @@ public class Exp1 {
 			NearestNeighbors nn = new NearestNeighbors(points);
 			List<Point3D> neighbors = nn.rangeQuery(query,eps);
 			System.out.println("number of neighbors = "+neighbors.size());
-			long averageTime = Exp1.averageRangequeryTimeLinear(points, 0.5);
-			System.out.println("Average rangequery time for " + args[0] + " at 0.5 eps: " + averageTime);
+			long averageTime = Experiments.averageRangequeryTimeLinear(points, 0.5);
+			System.out.println("Average rangequery time for " + method + " at 0.5 eps: " + averageTime);
 		}
 
 
@@ -132,8 +133,8 @@ public class Exp1 {
 			NearestNeighborsKD nn = new NearestNeighborsKD(points);
 			List<Point3D> neighbors = nn.rangeQuery(query,eps);
 			System.out.println("number of neighbors = "+neighbors.size());
-			long averageTime = Exp1.averageRangequeryTimeKD(points, 0.5);
-			System.out.println("Average rangequery time for " + args[0] + " at 0.5 eps: " + averageTime);
+			long averageTime = Experiments.averageRangequeryTimeKD(points, 0.5);
+			System.out.println("Average rangequery time for " + method + " at 0.5 eps: " + averageTime);
 		}
 
 	}
