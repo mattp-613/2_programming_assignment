@@ -26,12 +26,13 @@ public class Exp1 {
 			nn.rangeQuery(point,eps);
 			long timeEnd = System.nanoTime();
 
-			average += (timeEnd - timeStart) / (i + 1); //NOT SURE ABOUT THIS
+			average += (timeEnd - timeStart);
 			
 		}
 
-		return average;
+		return (average / (points.size() / 10));
 	}
+
 	//this is Experiment 2
 	public static long averageRangequeryTimeKD(List<Point3D> points, double eps){
 		NearestNeighborsKD nn = new NearestNeighborsKD(points);
@@ -43,11 +44,11 @@ public class Exp1 {
 			nn.rangeQuery(point,eps);
 			long timeEnd = System.nanoTime();
 
-			average += (timeEnd - timeStart) / (i + 1); //NOT SURE ABOUT THIS
+			average += (timeEnd - timeStart); //NOT SURE ABOUT THIS
 			
 		}
 
-		return average;
+		return (average / (points.size() / 10));
 	}
 
 
@@ -93,29 +94,48 @@ public class Exp1 {
 								Double.parseDouble(args[4]),
 								Double.parseDouble(args[5]));
 
-	//Linear time for EXP2
-	if (method.equals("lin")){
-		NearestNeighbors nn = new NearestNeighbors(points);
-		List<Point3D> neighbors = nn.rangeQuery(query,eps);
-		System.out.println("number of neighbors = "+neighbors.size());
-		System.out.println(neighbors);
-		long averageTime = Exp1.averageRangequeryTimeLinear(points, 0.5);
-		System.out.println("Average rangequery time for " + args[0] + " at 0.5 eps: " + averageTime);
+	String experiment = args[6];
+
+
+	//Experiment 1
+	if(experiment.equals("exp1")){
+
+		if (method.equals("lin")){
+			NearestNeighbors nn = new NearestNeighbors(points);
+			List<Point3D> neighbors = nn.rangeQuery(query,eps);
+			System.out.println("number of neighbors = "+neighbors.size());
+			System.out.println(neighbors);
+		}
+
+		else{
+			NearestNeighborsKD nn = new NearestNeighborsKD(points);
+			List<Point3D> neighbors = nn.rangeQuery(query,eps);
+			System.out.println("number of neighbors = "+neighbors.size());
+			System.out.println(neighbors);
+		}
+
 	}
 
-	//Linear time for EXP2
+	//Experiment 2
 	else{
-		NearestNeighborsKD nn = new NearestNeighborsKD(points);
-		List<Point3D> neighbors = nn.rangeQuery(query,eps);
-		System.out.println("number of neighbors = "+neighbors.size());
-		System.out.println(neighbors);
-		long averageTime = Exp1.averageRangequeryTimeKD(points, 0.5);
-		System.out.println("Average rangequery time for " + args[0] + " at 0.5 eps: " + averageTime);
-	}
 
-	/* 
-	System.out.println("number of neighbors = "+neighbors.size());
-	System.out.println(neighbors);
-	*/
+		if (method.equals("lin")){
+			NearestNeighbors nn = new NearestNeighbors(points);
+			List<Point3D> neighbors = nn.rangeQuery(query,eps);
+			System.out.println("number of neighbors = "+neighbors.size());
+			long averageTime = Exp1.averageRangequeryTimeLinear(points, 0.5);
+			System.out.println("Average rangequery time for " + args[0] + " at 0.5 eps: " + averageTime);
+		}
+
+
+		else{
+			NearestNeighborsKD nn = new NearestNeighborsKD(points);
+			List<Point3D> neighbors = nn.rangeQuery(query,eps);
+			System.out.println("number of neighbors = "+neighbors.size());
+			long averageTime = Exp1.averageRangequeryTimeKD(points, 0.5);
+			System.out.println("Average rangequery time for " + args[0] + " at 0.5 eps: " + averageTime);
+		}
+
+	}
   }   
 }
