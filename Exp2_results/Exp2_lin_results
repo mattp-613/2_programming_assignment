@@ -14,9 +14,9 @@ javac *.java && java Experiments exp2 lin Point_Cloud1.csv 0.5 3.107437007 0.032
 number of neighbors = 2106
 Average rangequery time for lin at 0.5 eps: 767307
 
-javac *.java && java Experiments exp2 kd Point_Cloud1.csv 0.5 11.58047393 2.990601868 1.865463342
+javac *.java && java Experiments exp2 lin Point_Cloud1.csv 0.5 11.58047393 2.990601868 1.865463342
 number of neighbors = 62
-Average rangequery time for kd at 0.5 eps: 53890
+Average rangequery time for lin at 0.5 eps: 733456
 
 javac *.java && java Experiments exp2 lin Point_Cloud1.csv 0.5 14.15982089 4.680702457 -0.133791584
 number of neighbors = 30

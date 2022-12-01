@@ -13,6 +13,7 @@ public class Point3D {
   private double x;
   private double y;
   private double z;
+  private int clusterLabel = -1;
   public int label; // not used here
 
   // constructs point (x,y,z)
@@ -36,6 +37,12 @@ public class Point3D {
   // gets z-coordinate
   public double getZ() {
 	  return z;
+  }
+
+  public int getClusterLabel(){return this.clusterLabel;};
+
+  public void setClusterLabel(int clusterLabel){
+    this.clusterLabel = clusterLabel;
   }
 
   // gets coordinate x, y or z if axis 0, 1, or 2
