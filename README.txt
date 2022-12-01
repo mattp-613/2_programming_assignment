@@ -20,7 +20,7 @@ The input arguments for the Experiments.java file are as follows:
 
 If you are not running experiments using Experiment.java:
 
-Exp1:
+Exp1 & Exp2:
 Arguments are as follows:
 1. String for method "lin","kd"
 2. CSV filename
