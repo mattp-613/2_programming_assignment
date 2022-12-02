@@ -1,3 +1,12 @@
+/*
+ * Experiment 2
+ *
+ * Matthew Petrucci
+ *
+ * 30011935
+ *
+*/ 
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -28,7 +37,6 @@ public class Exp2 {
 			long averageTime = Experiments.averageRangequeryTimeLinear(points, 0.5);
 			System.out.println("Average rangequery time for " + method + " at 0.5 eps: " + averageTime);
 		}
-
 
 		else{
 			NearestNeighborsKD nn = new NearestNeighborsKD(points);

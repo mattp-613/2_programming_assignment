@@ -1,3 +1,12 @@
+/*
+ * KDtree (KDnode)
+ *
+ * Matthew Petrucci
+ *
+ * 30011935
+ *
+*/ 
+
 public class KDtree {
 
     public KDnode root;
@@ -6,15 +15,17 @@ public class KDtree {
         this.root = null;
     }
 
-    //use this function to add
     public void add(Point3D pt){
-
+        //adds a point to the tree
+        
         insert(pt, this.root, 0);
 
     }
 
-    //used for recursion of add function
     public KDnode insert(Point3D pt, KDnode node, int axis){
+        //recursive helper to the add function that checks 
+        //if a node is currently occupied and if so where to place the point
+        //based off the points axis
 
         if(node == null){
             node = new KDnode(pt,axis);

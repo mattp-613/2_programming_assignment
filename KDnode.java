@@ -1,3 +1,12 @@
+/*
+ * KDnode ((X,Y,Z), axis)
+ *
+ * Matthew Petrucci
+ *
+ * 30011935
+ *
+*/ 
+
 public class KDnode {
 
     public Point3D point;

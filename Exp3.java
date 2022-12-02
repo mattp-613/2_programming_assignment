@@ -1,4 +1,12 @@
-// Matthew Petrucci 300119235
+/*
+ * Experiment 3
+ *
+ * Matthew Petrucci
+ *
+ * 30011935
+ *
+*/ 
+
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
@@ -131,7 +139,7 @@ public class Exp3{
                 writer.write(this.pnts.get(i).getX() + ",");
                 writer.write(this.pnts.get(i).getY() + ",");
                 writer.write(this.pnts.get(i).getZ() + ",");
-                writer.write(this.pnts.get(i).getClusterLabel() + ",");
+                writer.write(this.pnts.get(i).getClusterLabel() + "," + "\n");
             }
         
             writer.close();
@@ -161,7 +169,7 @@ public class Exp3{
         List<Point3D> dbpoints = db.getPoints();
 
         long timeStart = System.nanoTime();
-        db.save("Cloud2");
+        db.save("Cloud1");
 		long timeEnd = System.nanoTime();
 
         System.out.println("Time taken: " + (timeEnd - timeStart));

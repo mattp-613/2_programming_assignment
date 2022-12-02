@@ -1,3 +1,12 @@
+/*
+ * NearestNeighborsKD
+ *
+ * Matthew Petrucci
+ *
+ * 30011935
+ *
+*/ 
+
 import java.util.List;
 import java.util.ArrayList;
 
