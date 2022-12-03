@@ -20,10 +20,10 @@ public class Exp2 {
          // choose between linear or kd
          String method = args[0];
 
+         double eps = Double.parseDouble(args[1]);
+
          // reads the csv file
-         List<Point3D> points = Experiments.read(args[1]);
- 
-         double eps = Double.parseDouble(args[2]);
+         List<Point3D> points = Experiments.read(args[2]);
          
          // read the point given
          Point3D query = new Point3D(Double.parseDouble(args[3]),

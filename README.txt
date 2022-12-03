@@ -27,5 +27,4 @@ Arguments are as follows:
 3. EPS number
 4,5,6: X,Y,Z of 3D point
 
-Exp2:
-Arguments are as follows:
+All data and important stuff is in the .pdf report (also in .docx format).
